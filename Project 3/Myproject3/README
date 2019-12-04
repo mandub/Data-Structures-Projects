@@ -1,0 +1,235 @@
+
+
+  README for Datastructures Project 3 Auto-Testing Package
+  --------------------------------------------------------
+
+
+  Contents
+  --------
+  0. About
+
+  1. What's included
+  
+2. Use within IDLE
+  
+3. Use outside of IDLE
+
+
+
+  
+0. About
+  --------
+
+  Hello, structurers of data!
+
+ 
+ This package contains some of the testing programs that
+  I demonstrated in class, along with the upper-case and
+  expanded alphabet files.
+
+
+  You will notice that the python scripts have been obfuscated
+  (phrases selected from Blake Butler's "There is No Year").
+
+  This does not change how the program works under the hood,
+
+  and simply prevents reverse-engineering of class definitions and
+  functions that might help you on your project solutions.
+
+
+  I have also included the more robust of my perl scripts, for
+  anyone interested in running that (see section 3).
+  That code is
+  fully commented, so if you're interested in looking at what's
+  happening in that script
+ it should be approachable even if
+  you don't have any experience writing in perl.
+
+
+  As a *** DISCLAIMER *** The perl script does perform system
+  commands and generate files. 
+ These operations are all perfectly
+  safe, but for the sake of being covered 
+I'll explicitly state
+  that you (the user) accept responsibility for ANY misfortune
+  caused by the use or misuse of the software I've provided by
+  running any of the programs.  In other words, "No lawsuit.
+  No lawsuit.
+  You're the lawsuit.  No, you're the lawsuit.
+"
+
+  That said, if you have files with any of the following names:
+
+ 
+    - Results.out
+     - test_decode_<n>.tmp  (for any integer <n>)
+     - test_failures.err
+
+
+  make sure that you run my perl script in a directory separate
+  from your files of the same name, since they're liable to be
+  overwritten and/or deleted.
+
+
+  Most importantly, good luck with Project 3!  Happy Testing!
+
+  - Alex
+
+
+
+
+  1. What's Included
+  ------------------
+
+  - GenerateTest.py 
+: This is the python script you would run
+      from within a development environment such as IDLE or
+      a command-line python3 interpreter.
+  It is written using
+      python3 standards, so it may or may not work for earlier
+      versions.
+
+  - TestGenerator.py 
+: This is the python script that you would
+      run from a terminal-environment. 
+ The code is exactly the
+      same as GenerateTest.py, but the way you get it to make
+  
+    you smile is slightly different (compare sections 2 and 3).
+
+
+  - RandTestBinDecode.pl : This is the perl script that tests
+    
+  your project code using randomly generated strings (and
+      trees) for a user-provided number of times.
+  There should
+      be sufficient commenting that an interested student could
+    
+  probably make an equivalent program in python.
+
+  - Letters : 
+A basic text file containing the letters A-Z.
+      Trees will have 26 leaves.
+
+  - MoreLetters : A text file containing A-Z,a-z,_,0-9.
+
+      Trees will have 64 leaves.
+
+
+
+  2. Use Within IDLE
+  ------------------
+
+  First, make sure that <Letters File>, 
+the file containing the
+  alphabet that you want to build your tree on, is in the same
+  folder as GenerateTest.py. 
+ Then, open GenerateTest.py and run
+  the following command:
+
+
+   
+    GenerateTest.GenerateTest("<Letters File>","<Phrase>")
+
+
+  This should output a random binary tree and the corresponding
+  binary encoding of <Phrase>.  
+You can then copy and paste this
+  to a file and use that file to test your code!
+
+
+  Example:
+
+
+       GenerateTest.GenerateTest("Letters","HELLOTESTER")
+
+
+
+
+  3. Use Outside of IDLE
+  ----------------------
+
+  This should be equally (if not more) straightforward. 
+ Go to
+  the directory with the code and <Letters File>s. 
+ To perform
+  simple tree generation, you can use the command-line version
+  of GenerateTest.py (TestGenerator.py) as follows:
+
+
+
+       python3 TestGenerator.py <Letters File> <Phrase>
+
+
+  To save this to a file, just append a ' > ' to the end of the
+  command,
+ followed by the name of the file that you want to write
+  to.
+
+
+  Example:
+
+
+       python3 TestGeneratory.py Letters HELLOTESTER > test.out
+
+
+  To run the perl script, provide the name of your decoding program
+ 
+ (i.e., your Project 3 code), the letters file, and a number of
+  times to run.
+
+
+  Example:
+
+
+       perl RandTestBinDecode.pl BinDecode.py Letters 100
+  
+     
+
+  NOTE that this program will only work if the first non-whitespace
+ 
+ character sequence your decoder prints is the decoded string.
+  For example, the following output formats will work:
+
+
+  
+Example 1:
+
+       DECODEDSTRING
+       Number of Bits     : 39
+       Bits Per Character : 3.000
+
+
+  
+Example 2:
+
+       DECODEDSTRING (This parenthetical is separated from
+       -------------  the decoded string by whitespace, so
+                      
+it's totally cool)
+       39 bits
+       1 occurrence of the letter 'R'!
+
+
+  Whereas the following output format would NOT work:
+
+
+
+       Decoded String     : DECODEDSTRING
+       Number of Bits     : 39
+       Bits Per Character : 3.000
+
+
+  
+Also, these two scripts are '/usr/bin/env' shebanged and
+  should have execute permissions set, if you'd prefer to
+  run them that way.
+
+
+ 
+ 
+  Alex Nord
+  Datastructures, Fall 2016
+  No rights reserved
+
+
